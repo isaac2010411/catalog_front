@@ -72,9 +72,20 @@ const OrdersByUserTable = () => {
                       </Grid>
                       <Grid item xs={12} sm={6} md={2} className={classes.ordersByUserTablePrice}>
                         <Chip
-                          label={item?.payments?.paymentLink ? 'Link generado' : 'Pendiente'}
+                          label={
+                            item?.payments?.status === 'paid'
+                              ? 'Pago'
+                              : item?.payments?.status === 'rejected'
+                              ? 'Rechazado'
+                              : item?.payments?.paymentLink
+                              ? 'Link generado'
+                              : 'Pendiente'
+                          }
                           variant='filled'
-                          color={item?.payments?.paymentLink ? 'warning' : 'error'}
+                          color={  item?.payments?.status === 'paid'
+                          ? 'success'
+                          : item?.payments?.status === 'rejected'
+                          ? 'error':item?.payments?.paymentLink ? 'warning' : 'error'}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6} md={3} className={classes.ordersByUserTablePrice}>
@@ -86,9 +97,7 @@ const OrdersByUserTable = () => {
                           {[
                             ...item.products,
                             {
-                              publicPrice: Number(
-                                parseFloat(item.address.shippingPrice).toString().replace('.', '')
-                              ),
+                              publicPrice: Number(parseFloat(item.address.shippingPrice).toString().replace('.', '')),
                               quantity: 1,
                             },
                           ]

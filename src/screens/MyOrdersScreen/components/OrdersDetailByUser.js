@@ -7,8 +7,8 @@ import MyOrderResume from './MyOrderResume'
 import Loader from '../../../components/Loader/Loader'
 import ColDownTimer from '../../../components/CoulDownTimer/CoulDownTimer'
 import { getMyOrder } from '../../../redux/actions/myOrderActions'
-import { isAfter } from 'date-fns'
-
+import { format, isAfter } from 'date-fns'
+import SuccessSVG from '../../../assets/success.svg'
 const OrderDetailByUser = () => {
   const dispatch = useDispatch()
 
@@ -40,33 +40,58 @@ const OrderDetailByUser = () => {
                   <OrderStepper getOrderByAdminData={myOrderData} />
 
                   <MyOrderResume getOrderByAdminData={myOrderData} />
-                   {myOrderData?.payment?.expirationDate && ( <Card style={{ marginTop: '16px' }}>
-                    <CardHeader style={{ backgroundColor: '#e6e5e5' }} title={<Typography>Link de pago</Typography>} />
-                  
-                      <>
-                        <CardContent>
-                          <ColDownTimer targetDate={myOrderData.payment.expirationDate} />
-                        </CardContent>
-                        <CardActions>
-                          <Grid container>
-                            <Grid item xs={12}>
-                              <Button
-                                color='primary'
-                                variant='contained'
-                                fullWidth
-                                disabled={!isAfter(new Date(myOrderData.payment.expirationDate), new Date())}
-                                onClick={() => {
-                                  window.location.href = myOrderData.payment.paymentLink
-                                }}
-                              >
-                                Pagar
-                              </Button>
-                            </Grid>
+                  {console.log(myOrderData)}
+                  {myOrderData?.payment?.status === 'paid' ? (
+                    <Card style={{ marginTop: '16px' }}>
+                      <CardHeader
+                        style={{ backgroundColor: '#e6e5e5' }}
+                        title={<Typography>Detalle del pago</Typography>}
+                      />
+                      <CardContent>
+                        <Grid container justifyContent='space-between'>
+                          <Grid item>
+                            <p>Fecha de pago {format(new Date(myOrderData?.payment.mpResponse.date_created),'dd-MM-yyyy hh:mm:ss')}</p>
+                            <p>Estado {myOrderData?.payment.status === 'paid' ? 'PAGO' : ''}</p>
                           </Grid>
-                        </CardActions>
-                      </>
-                  
-                  </Card>  )}
+                          <Grid>
+                            <img height={200} src={SuccessSVG} alt='' />
+                          </Grid>
+                        </Grid>
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    myOrderData?.payment?.expirationDate && (
+                      <Card style={{ marginTop: '16px' }}>
+                        <CardHeader
+                          style={{ backgroundColor: '#e6e5e5' }}
+                          title={<Typography>Link de pago</Typography>}
+                        />
+
+                        <>
+                          <CardContent>
+                            <ColDownTimer targetDate={myOrderData.payment.expirationDate} />
+                          </CardContent>
+                          <CardActions>
+                            <Grid container>
+                              <Grid item xs={12}>
+                                <Button
+                                  color='primary'
+                                  variant='contained'
+                                  fullWidth
+                                  disabled={!isAfter(new Date(myOrderData.payment.expirationDate), new Date())}
+                                  onClick={() => {
+                                    window.location.href = myOrderData.payment.paymentLink
+                                  }}
+                                >
+                                  Pagar
+                                </Button>
+                              </Grid>
+                            </Grid>
+                          </CardActions>
+                        </>
+                      </Card>
+                    )
+                  )}
                 </Grid>{' '}
               </Grid>
             ) : (
