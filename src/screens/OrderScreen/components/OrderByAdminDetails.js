@@ -41,7 +41,7 @@ const OrderByAdminDetails = () => {
         </div>
       ) : (
         data && (
-          <Grid container spacing={4}>
+          <>
             <div
               style={{
                 display: 'flex',
@@ -70,7 +70,7 @@ const OrderByAdminDetails = () => {
             <Grid item xs={12} md={12}>
               <MyOrderResume getOrderByAdminData={data} />
             </Grid>
-          </Grid>
+          </>
         )
       )}
     </>

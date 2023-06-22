@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Paid } from '@mui/icons-material'
-import { Button, Box, IconButton } from '@mui/material'
+import { Button, Box, IconButton, Tooltip } from '@mui/material'
 import CustomModal from '../../../components/CustomModal/CustomModal'
 import { useCallback, useEffect, useState } from 'react'
 import { generatePaymentLink } from '../../../redux/actions/orderActions'
@@ -46,7 +46,9 @@ const GeneratePaymentLinkModal = ({ item }) => {
     <CustomModal
       openButton={
         <IconButton color='info' onClick={openModalDeleteBrand}>
-          <Paid />
+          <Tooltip title='Generar Link'>
+            <Paid color='primary' />
+          </Tooltip>
         </IconButton>
       }
       isOpen={deleteBrandModal}

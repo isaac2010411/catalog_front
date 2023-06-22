@@ -14,8 +14,8 @@ const ProductCard = ({ product }) => {
   const { addToCart } = useContext(AppContext)
 
   return (
-    <Grid item className={classes.productContainer} xs={12} sm={6} md={4} lg={3}>
-      <Card className={classes.productCard}>
+    <Grid item elevation={24} className={classes.productContainer} xs={12} sm={6} md={4} lg={3}>
+      <Card   className={classes.productCard}>
         <CardMedia className={classes.productMedia} component='img' image={`${product.image}`} alt={product.product} />
         <CardContent className={classes.productCardContent}>
           <ViewProductModal item={product} icon={true} />

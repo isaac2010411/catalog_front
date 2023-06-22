@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Grid, TextField, Button, Card, CardContent, CardActions, CardHeader, Typography } from '@mui/material'
+import { Grid, TextField, Button, Card, CardContent, CardActions, CardHeader, Typography, Avatar } from '@mui/material'
 import CustomSnackbar from '../../components/CustomSnackBar/CustomSnackBar'
 import { AppContext } from '../../contexts/AppContext'
 import { USER_REGISTER_RESET } from '../../redux/constants/userConstants'
 import { registerUser } from '../../redux/actions/userActions'
 import styles from './styles/signUpScreenStyles'
-
+import image from '../../assets/hypnotic.gif'
 const initialState = {
   name: '',
   email: '',
@@ -58,12 +58,19 @@ const SignUpScreen = () => {
 
   return (
     <Grid sx={styles.rootContainer} container component={'form'} autoComplete='off' onSubmit={handleSubmit}>
-      <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={8} justifyContent='center' display='flex'>
+        <Avatar
+          src={image}
+          alt=''
+          sx={{ margin: '0 auto', height: { xs: '100px', md: '400px' }, width: { xs: '100px', md: '400px' } }}
+        />
+      </Grid>
+      <Grid item xs={12} md={4}>
         <Card>
           <CardHeader
             sx={styles.loginCardHeader}
-            avatar={'SIG'}
-            title={<b>Sistema integral de Gestion</b>}
+            avatar={'HGS'}
+            title={<b>Hypnotic Grow Shop</b>}
             subheader='Registrate'
           />
           <CardContent>

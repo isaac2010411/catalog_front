@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { format } from 'date-fns'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Money, Visibility } from '@mui/icons-material'
-import { Button, Card, IconButton } from '@mui/material'
+import { CheckCircleOutline, Money, Visibility } from '@mui/icons-material'
+import { Button, Card, IconButton, Tooltip } from '@mui/material'
 import ReactTable from '../../components/CustomReactTable/CustomReactTable'
 import { getOrdersByAdmin } from '../../redux/actions/orderActions'
 import CustomPageTable from '../../components/CustomPageTable/CustomPageTable'
@@ -12,6 +12,7 @@ import Loader from '../../components/Loader/Loader'
 import TimelapseIcon from '@mui/icons-material/Timelapse'
 import Checkbox from '@mui/material/Checkbox'
 import GeneratePaymentLinkModal from './components/GeneratePaymentLinkModal'
+import { swichOrderStatus } from '../../shared/helpers/commonsFunctions'
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } }
 
@@ -49,7 +50,9 @@ const OrderScreen = () => {
             .map((p) => p.publicPrice * p.quantity)
             .reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
             .toFixed(2)}`,
+          orderStatus: swichOrderStatus(item.status),
           owner: item.owner?.name || '',
+          paymentStatus: !item?.payment ? 'Pendiente' : item?.payment?.status === 'paid' ? 'Pago' : 'Pendiente',
           billings: `$ ${
             item.products
               .map((p) => p.publicPrice)
@@ -57,17 +60,26 @@ const OrderScreen = () => {
           }`,
           actions: (
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              {/* {!item.payment ? ( */}
+              {item.payment?.status === 'paid' ? (
+                <Tooltip title='Pago aprobado'>
+                  <IconButton>
+                    <CheckCircleOutline color='success' />
+                  </IconButton>
+                </Tooltip>
+              ) : !item.payment ? (
                 <GeneratePaymentLinkModal item={item} />
-              // ) : (
-              //   <IconButton>
-              //     <TimelapseIcon />
-              //   </IconButton>
-              // )}
-
-              <IconButton onClick={() => navigate(`/orders?orderId=${item._id}`)}>
-                <Visibility />
-              </IconButton>
+              ) : (
+                <Tooltip title='Pendiente'>
+                  <IconButton>
+                    <TimelapseIcon color='warning' />
+                  </IconButton>
+                </Tooltip>
+              )}
+              <Tooltip title='Ver'>
+                <IconButton onClick={() => navigate(`/orders?orderId=${item._id}`)}>
+                  <Visibility />
+                </IconButton>
+              </Tooltip>
             </div>
           ),
         }
@@ -90,14 +102,12 @@ const OrderScreen = () => {
       })
       headersTable.push({
         Header: 'Pago',
-        accessor: 'c',
-        Cell: (prop) => <div>Recibido</div>,
+        accessor: 'paymentStatus',
         // Cell: (prop) => <div style={{ textAlign: 'end' }}>{prop.row.original.actions}</div>,
       })
       headersTable.push({
         Header: 'estado',
-        accessor: 'cobrar',
-        Cell: (prop) => <div>Concretado</div>,
+        accessor: 'orderStatus',
       })
       headersTable.push({
         Header: '',
@@ -129,6 +139,7 @@ const OrderScreen = () => {
 
     return headersTable
   }
+  console.log(data)
 
   return (
     <CustomPageTable pageName='Ordenes'>

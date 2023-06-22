@@ -12,7 +12,7 @@ const CustomPageTable = ({ children, pageName }) => {
         alignItems='center'
         style={{ padding: '15px 15px 100px 15px' }}
       >
-        <Grid item xs={12} md={10}>
+        <Grid item xs={12} md={12}>
           {children}
         </Grid>
       </Grid>

@@ -11,12 +11,14 @@ import {
   CardHeader,
   FormHelperText,
   Typography,
+  Avatar,
+  CardMedia,
 } from '@mui/material'
 import CustomSnackbar from '../../components/CustomSnackBar/CustomSnackBar'
 import { AppContext } from '../../contexts/AppContext'
 import { login } from '../../redux/actions/userActions'
 import styles from './styles/loginScreenStyles'
-
+import image from '../../assets/hypnotic.gif'
 const initialState = {
   email: '',
   password: '',
@@ -65,12 +67,19 @@ const LoginScreen = () => {
 
   return (
     <Grid sx={styles.rootContainer} container component={'form'} autoComplete='off' onSubmit={handleSubmit}>
-      <Grid item xs={12} md={5} lg={3}>
+      <Grid item xs={12} md={8} justifyContent='center' display='flex'>
+        <Avatar
+          src={image}
+          alt=''
+          sx={{ margin: '0 auto', height: { xs: '100px', md: '400px' }, width: { xs: '100px', md: '400px' } }}
+        />
+      </Grid>
+      <Grid item xs={12} md={4}>
         <Card>
           <CardHeader
             sx={styles.loginCardHeader}
-            avatar={'SIG'}
-            title={<b>Sistema integral de Gestion</b>}
+            avatar={'HGS'}
+            title={<b>Hypnotic Grow Shop</b>}
             subheader='Iniciar sesion'
           />
           <CardContent>

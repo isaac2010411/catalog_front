@@ -1,25 +1,15 @@
-
-import {
-  Card,
-  CardContent,
-  FormControl,
-  Grid,
-  TextField,
-} from '@mui/material'
+import { Card, CardContent, FormControl, Grid, TextField } from '@mui/material'
 import CategotyList from '../../../components/CategoryList/CategoryList'
 
 const ProductFilterDatabase = () => {
   return (
-    <Grid container>
+    <Grid container pl={2}pr={2}>
       <Grid item xs={12} mb={5}>
         <Card
           style={{
             width: '100%',
-            minHeight: '12rem',
+            minHeight: '10rem',
             paddingTop: '1rem',
-
-
-            // backgroundColor:'#EAFAF1'
           }}
         >
           <CardContent>
@@ -30,7 +20,7 @@ const ProductFilterDatabase = () => {
                   <TextField id='outlined-adornment-password' type={'text'} fullWidth label='Buscar' />
                 </FormControl>
               </Grid>{' '}
-              <Grid item xs={12} md={10} margin={'0 auto'} style={{ overflowX: 'auto', display: 'inline-flex' }}>
+              <Grid item xs={12} md={10} margin={'0 auto'} style={{ display: 'inline-block' }}>
                 <CategotyList />
               </Grid>
             </Grid>
