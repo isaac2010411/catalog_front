@@ -7,7 +7,6 @@ import ProductGrid from '../../components/ProductsGrid/ProductsGrid'
 import PaginationComponent from '../../components/PaginationComponent/PaginationComponent'
 import { useSearchParams } from 'react-router-dom'
 import { SUPPLIER_GET_LIST_RESET } from '../../redux/constants/supplierConstants'
-import { Typography } from '@mui/material'
 import ProductFilterDatabase from './components/ProductFilerDatabase'
 
 const SupplierProducstScreen = () => {
@@ -82,12 +81,6 @@ const SupplierProducstScreen = () => {
     <>
       <ProductFilterDatabase />
       <CustomPageTable pageName={'Productos'}>
-        {/* <div className={classes.brandTitleContainer}>
-        <Typography variant='h3' mt={5} mb={5}>
-          Productos
-        </Typography>
-      </div> */}
-
         {loadingSupplierGetProducts || loadingSupplierGetProductsPage ? (
           <div className={classes.brandLoader}>
             <Loader />

@@ -12,13 +12,13 @@ import {
   FormHelperText,
   Typography,
   Avatar,
-  CardMedia,
 } from '@mui/material'
 import CustomSnackbar from '../../components/CustomSnackBar/CustomSnackBar'
 import { AppContext } from '../../contexts/AppContext'
 import { login } from '../../redux/actions/userActions'
 import styles from './styles/loginScreenStyles'
 import image from '../../assets/hypnotic.gif'
+
 const initialState = {
   email: '',
   password: '',

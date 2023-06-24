@@ -159,7 +159,7 @@ const OrderScreen = () => {
               alignItems: 'center',
             }}
           >
-            <h4 style={{ fontSize: '1.5rem' }}>Ordenes</h4>
+            <h4 style={{ fontSize: '2rem',fontWeight:'600' }}>Ordenes</h4>
             {userInfo && userInfo.role === 'administrator' && (
               <Button startIcon={<Money />} variant='contained' color='secondary'>
                 Solicitar liquidacion

@@ -3,7 +3,7 @@ import CategotyList from '../../../components/CategoryList/CategoryList'
 
 const ProductFilterDatabase = () => {
   return (
-    <Grid container pl={2}pr={2}>
+    <Grid container pl={2}pr={2}mt={1}>
       <Grid item xs={12} mb={5}>
         <Card
           style={{

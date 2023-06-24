@@ -62,9 +62,15 @@ const OrderResumeScreen = () => {
     <Page title='Resumen de Orden'>
       <Grid container component='form' direction='row' pb={5} mb={5}>
         <Grid item xs={12} md={8} className={classes.orderResumeScreenTitleContainer}>
-          <h2>Resumen de orden</h2>
+          <h4 style={{ fontSize: '2rem', fontWeight: '600' }}>Resumen de orden</h4>
         </Grid>
-        <Grid item xs={12} md={8} className={classes.orderResumeScreenContainer}>
+        <Grid
+          item
+          xs={12}
+          sx={{ marginBottom: { xs: '2rem', md: '0px' } }}
+          md={8}
+          className={classes.orderResumeScreenContainer}
+        >
           <ShippingSelect selectShipping={selectShipping} setSelectShipping={setSelectShipping} />
         </Grid>
         <Grid item xs={12} md={4} className={classes.orderResumeScreenContainer}>

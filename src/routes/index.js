@@ -15,6 +15,7 @@ import MyAddressScreen from '../screens/MyAddressScreen/MyAddressScreen'
 import OrderResumeScreen from '../screens/OrderResumeScreen/OrderResumeScreen'
 import MyOrdersScreen from '../screens/MyOrdersScreen/MyOrdersScreen'
 import OrderScreen from '../screens/OrderScreen/OrderScreen'
+import NotificationScreen from '../screens/NotificationScreen/NotificationScreen'
 const App = () => {
   return (
     <Routes>
@@ -64,6 +65,14 @@ const App = () => {
           element={
             <AuthRoutes>
               <OrderScreen />
+            </AuthRoutes>
+          }
+        />
+          <Route
+          path='/notifications'
+          element={
+            <AuthRoutes>
+              <NotificationScreen />
             </AuthRoutes>
           }
         />

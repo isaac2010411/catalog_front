@@ -5,7 +5,7 @@ const usersScreenStyles = {
     marginBottom: '40px',
     alignItems: 'center',
   },
-  screenTitle: { fontSize: '1.5rem' },
+  screenTitle: { fontSize: '2rem',fontWeight:'600' },
   loaderContainer: { display: 'flex', justifyContent: 'center' },
   filterContainer: { padding: '25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
   spanStatus: {

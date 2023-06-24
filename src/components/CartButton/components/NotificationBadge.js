@@ -11,6 +11,7 @@ import { SocketContext } from '../../../contexts/socketContext'
 import { getNotificationList } from '../../../redux/actions/notificationActions'
 import CartBadge from './CartBadge'
 import NotificationModal from './NotificationModal'
+import { Link } from 'react-router-dom'
 
 const ITEM_HEIGHT = 48
 
@@ -46,7 +47,6 @@ export default function NotificationsBadge() {
     setAnchorEl(event.currentTarget)
   }
 
-
   return (
     <div>
       <IconButton
@@ -76,24 +76,25 @@ export default function NotificationsBadge() {
         }}
       >
         {notificationsd.map((option) => (
-          <MenuItem key={option._id} onClick={() => [setNotificationModal(true), setShowNotificationInfo(option)]}>
-            <Grid container>
-              <Grid item xs={11} style={{ padding: 'l0px', margin: '8px 0' }}>
-                <Typography noWrap fontWeight='bold' style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <option.icon style={{ marginRight: '8px' }} /> */}
-                  {option.title}
-                </Typography>
-                <Typography noWrap>{option.message.slice(0, 50)}</Typography>
-                <Typography noWrap textAlign='end'>
-                  {formatDistance(new Date(option.created), new Date(), { addSuffix: true, locale: es })}
-                </Typography>
+          <MenuItem key={option._id}>
+            <Link to={`/notifications?#${option._id}`} style={{textDecoration:'none',color:'inherit'}}>
+              <Grid container>
+                <Grid item xs={11} style={{ padding: 'l0px', margin: '8px 0' }}>
+                  <Typography noWrap fontWeight='bold' style={{ display: 'flex', alignItems: 'center' }}>
+                    {/* <option.icon style={{ marginRight: '8px' }} /> */}
+                    {option.title}
+                  </Typography>
+                  <Typography noWrap>{option.message.slice(0, 50)}</Typography>
+                  <Typography noWrap textAlign='end'>
+                    {formatDistance(new Date(option.created), new Date(), { addSuffix: true, locale: es })}
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
+            </Link>
           </MenuItem>
         ))}
         <MenuItem>Ver todos</MenuItem>
       </Menu>
-
       {notificationModal && (
         <NotificationModal
           showNotificationInfo={showNotificationInfo}
