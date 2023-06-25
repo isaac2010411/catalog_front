@@ -40,7 +40,7 @@ const OrderDetailByUser = () => {
                   <OrderStepper getOrderByAdminData={myOrderData} />
 
                   <MyOrderResume getOrderByAdminData={myOrderData} />
-                  {console.log(myOrderData)}
+              
                   {myOrderData?.payment?.status === 'paid' ? (
                     <Card style={{ marginTop: '16px' }}>
                       <CardHeader

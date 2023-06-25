@@ -29,6 +29,7 @@ export const swichPaymentStatus = (status) => {
     pending: 'Pendiente',
     undefined: 'Creado',
     creado: 'Creado',
+    
   }
 
   return paymentStatus[status]

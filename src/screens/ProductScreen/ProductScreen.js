@@ -36,9 +36,9 @@ const SupplierProducstScreen = () => {
           item.supplier.supplierName === '1422'
             ? item.price.replace('$', '')
             : item.price.replaceAll(',', '*').replaceAll('.', ',').replaceAll('*', '')
-        // console.log(item.supplier.supplierName)
+        
         const percentage = parseFloat(pricee) * 0.8 + parseFloat(pricee)
-        // console.log(parseFloat(percentage).toFixed(2))
+        
 
         return {
           ...item,
@@ -61,9 +61,9 @@ const SupplierProducstScreen = () => {
           item.supplier.supplierName === '1422'
             ? item.price.replace('$', '')
             : item.price.replaceAll(',', '*').replaceAll('.', ',').replaceAll('*', '')
-        // console.log(item.supplier.supplierName)
+    
         const percentage = parseFloat(pricee) * 0.8 + parseFloat(pricee)
-        // console.log(parseFloat(percentage).toFixed(2))
+       
 
         return {
           ...item,

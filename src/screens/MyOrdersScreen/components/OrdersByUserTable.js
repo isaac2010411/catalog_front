@@ -23,7 +23,7 @@ const OrdersByUserTable = () => {
     dispatch(getMyOrders())
   }, [dispatch])
 
-  console.log(myOrdersData)
+
   return (
     <Grid container>
       <Grid item xs={12} className={classes.ordersByUserTableContainer}>

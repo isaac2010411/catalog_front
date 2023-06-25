@@ -16,7 +16,7 @@ import brandScreenStyles from './styles/brandScreenStyles'
 const useStyles = makeStyles(brandScreenStyles)
 
 const TableButtons = ({ item }) => {
-  console.log(item)
+
   const dispatch = useDispatch()
 
   const onChange = (e) => {

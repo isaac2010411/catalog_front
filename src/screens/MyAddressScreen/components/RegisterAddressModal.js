@@ -34,7 +34,12 @@ const RegisterAddressModal = () => {
   const { locationByCpData, successLocationByCp } = useSelector((state) => state.locationByCP)
 
   const addProvince = useCallback(() => {
-    setAddress((t) => ({ ...t, province: locationByCpData[0].provincia }))
+    setAddress((t) => ({
+      ...t,
+      province: locationByCpData[0].provincia,
+      department: locationByCpData[0].partido,
+      location: locationByCpData[0].localidad,
+    }))
   }, [locationByCpData, setAddress])
 
   const closeRegisterAddressModal = useCallback(() => {

@@ -39,6 +39,7 @@ const AddressInputs = ({ address, setAddress }) => {
           fullWidth
           label='Municipalidad'
           required={true}
+          disabled={true}
           variant='outlined'
           value={address.department}
           onChange={(e) => setAddress({ ...address, department: e.target.value })}
@@ -49,6 +50,7 @@ const AddressInputs = ({ address, setAddress }) => {
           fullWidth
           label='Localidad o Barrio'
           required={true}
+          disabled={true}
           variant='outlined'
           value={address.location}
           onChange={(e) => setAddress({ ...address, location: e.target.value })}

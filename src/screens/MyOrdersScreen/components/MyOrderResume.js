@@ -20,12 +20,13 @@ const MyOrderResume = ({ getOrderByAdminData }) => {
               alignItems: 'center',
             }}
           >
-            <Typography>Orden ID: {getOrderByAdminData._id}</Typography>
+            <Typography variant='h4'>Detalle del pedido</Typography>
           </Box>
         }
       />
       <CardContent>
         <ul style={{ listStyle: 'none', padding: '0' }}>
+          ID {getOrderByAdminData._id}
           {getOrderByAdminData.products.map((item) => (
             <li key={item._id} className={classes.orderResumeFirstItem}>
               <div style={{ display: 'flex' }}>
@@ -65,18 +66,15 @@ const MyOrderResume = ({ getOrderByAdminData }) => {
           Total{' '}
           <b>
             ${' '}
-            {
-              [
-                ...getOrderByAdminData.products,
-                {
-                  publicPrice: Number(
-                    parseFloat(getOrderByAdminData.address.shippingPrice).toString().replace('.', '')
-                  ),
-                  quantity: 1,
-                },
-              ]
-                .map((item) => item.publicPrice * item.quantity)
-                .reduce((previousValue, currentValue) => previousValue + currentValue, 0)}
+            {[
+              ...getOrderByAdminData.products,
+              {
+                publicPrice: Number(parseFloat(getOrderByAdminData.address.shippingPrice).toString().replace('.', '')),
+                quantity: 1,
+              },
+            ]
+              .map((item) => item.publicPrice * item.quantity)
+              .reduce((previousValue, currentValue) => previousValue + currentValue, 0)}
           </b>
         </Typography>
       </CardContent>

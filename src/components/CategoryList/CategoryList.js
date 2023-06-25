@@ -112,7 +112,7 @@ export default function CategotyList() {
           textColor='secondary'
           style={{
             backgroundColor: 'white',
-            margin: '1.1rem 0 1rem 0',
+            margin: '.1rem 0 .1rem 0',
             borderRadius: '13px',
           }}
           aria-label='scrollable auto tabs example'

@@ -139,7 +139,7 @@ const OrderScreen = () => {
 
     return headersTable
   }
-  console.log(data)
+ 
 
   return (
     <CustomPageTable pageName='Ordenes'>

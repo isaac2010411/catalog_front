@@ -7,6 +7,7 @@ import Loader from '../../../components/Loader/Loader'
 import MyOrderResume from '../../MyOrdersScreen/components/MyOrderResume'
 import { getOrderByAdmin } from '../../../redux/actions/orderActions'
 import UpdateOrderModal from './UpdateOrderModal'
+import PaymentResume from './PaymentResume'
 
 const OrderByAdminDetails = () => {
   const dispatch = useDispatch()
@@ -67,8 +68,11 @@ const OrderByAdminDetails = () => {
                 </CardActions>
               </Card>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12}>
               <MyOrderResume getOrderByAdminData={data} />
+            </Grid>
+            <Grid item xs={12}>
+              <PaymentResume getOrderByAdminData={data} />{' '}
             </Grid>
           </>
         )

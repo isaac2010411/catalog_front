@@ -39,7 +39,7 @@ export default function OrderStepper({ getOrderByAdminData }) {
   const handleSteps = () => {
     return ['Creada', 'Empaquetando', 'En Camino', 'Entregado']
   }
-  console.log(getOrderByAdminData)
+
   return (
     <Stack sx={{ width: '100%' }} spacing={4}>
       <Stepper

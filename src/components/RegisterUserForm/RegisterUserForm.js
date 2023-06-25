@@ -34,7 +34,7 @@ const RegisterUserForm = ({ userState, setUserState }) => {
   const handleIsActive = (e) => {
     setUserState({ ...userState, isActive: e.target.checked })
   }
-  console.log(userState)
+
   return (
     <Grid container direction='row' justifyContent='center' alignItems='center' spacing={{ xs: 1 }}>
       <Grid item xs={12} md={6}>
@@ -78,7 +78,7 @@ const RegisterUserForm = ({ userState, setUserState }) => {
           onChange={(e) => setUserState({ ...userState, phone: e.target.value })}
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12}>
         <TextField
           label='DNI'
           fullWidth
@@ -86,17 +86,6 @@ const RegisterUserForm = ({ userState, setUserState }) => {
           value={userState.dni}
           type='number'
           onChange={(e) => setUserState({ ...userState, dni: e.target.value })}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <TextField
-          label='Contraseña'
-          fullWidth
-          variant='outlined'
-          value={userState.password}
-          type='password'
-          autoComplete='false'
-          onChange={(e) => setUserState({ ...userState, password: e.target.value })}
         />
       </Grid>
       {userState && userState.isAdmin && !userState.isSuper && (

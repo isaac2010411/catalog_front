@@ -7,7 +7,7 @@ const SuperRoutes = ({ children }) => {
 
   let location = useLocation()
 
-  console.log(userInfo?.role !== role.SUPER_ROLE)
+
   if (userInfo?.role !== role.SUPER_ROLE) {
     return <Navigate to='/' state={{ from: location }} replace />
   }
